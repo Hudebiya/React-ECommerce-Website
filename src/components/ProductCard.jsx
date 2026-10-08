@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Star, Plus } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 export default function ProductCard({ product }) {
+    const { addToCart } = useCart();
   return (
     <div className="group bg-white rounded-3xl overflow-hidden border border-sage/30 hover:shadow-2xl hover:shadow-deep/20 hover:-translate-y-1 transition duration-300">
       <Link to={`/product/${product.id}`} className="block relative bg-mist aspect-square overflow-hidden">
@@ -30,11 +32,12 @@ export default function ProductCard({ product }) {
         <div className="flex items-center justify-between mt-4">
           <span className="text-xl font-bold text-deep">${product.price}</span>
           <button
-            className="w-10 h-10 rounded-full bg-deep text-white flex items-center justify-center hover:bg-leaf hover:rotate-90 transition duration-300"
-            aria-label="Add to cart"
-          >
-            <Plus size={20} />
-          </button>
+  onClick={() => addToCart(product)}
+  className="w-10 h-10 rounded-full bg-deep text-white flex items-center justify-center hover:bg-leaf hover:rotate-90 transition duration-300"
+  aria-label="Add to cart"
+>
+  <Plus size={20} />
+</button>
         </div>
       </div>
     </div>

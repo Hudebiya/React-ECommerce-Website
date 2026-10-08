@@ -1,7 +1,22 @@
 @import "tailwindcss";
 
-
 @theme {
   --font-sans: "Poppins", sans-serif;
-  --color-primary: #4f46e5;
+  --font-display: "Playfair Display", serif;
+
+  --color-ink: #092328;      /* sab se dark */
+  --color-deep: #12544f;     /* deep teal */
+  --color-leaf: #2a835f;     /* main green */
+  --color-sage: #8bbb92;     /* light accent */
+  --color-mist: #eef5ef;     /* page background (sage ka bohat halka shade) */
 }
+
+body {
+  background-color: var(--color-mist);
+  color: var(--color-ink);
+}
+
+/* scrollbar ko bhi theme mein */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-mist); }
+::-webkit-scrollbar-thumb { background: var(--color-leaf); border-radius: 10px; }
