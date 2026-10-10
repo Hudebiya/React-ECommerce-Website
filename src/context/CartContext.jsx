@@ -1,10 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useToast } from "./ToastContext";
 
 const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
 export function CartProvider({ children }) {
+  const { showToast } = useToast();
+
   // refresh pe cart na ude, isliye localStorage se shuru karte hain
   const [cart, setCart] = useState(() => {
     try {
@@ -37,6 +40,8 @@ export function CartProvider({ children }) {
         },
       ];
     });
+
+    showToast(`${product.title} added to cart`);
   };
 
   const increaseQty = (id) =>

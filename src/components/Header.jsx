@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { ShoppingBag, Leaf } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const { cartCount } = useCart();
@@ -33,10 +34,16 @@ export default function Header() {
         >
           <ShoppingBag size={22} />
           {cartCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-sage text-ink text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-              {cartCount}
-            </span>
-          )}
+  <motion.span
+    key={cartCount}
+    initial={{ scale: 1.8 }}
+    animate={{ scale: 1 }}
+    transition={{ type: "spring", stiffness: 500, damping: 12 }}
+    className="absolute -top-1 -right-1 bg-sage text-ink text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center"
+  >
+    {cartCount}
+  </motion.span>
+)}
         </Link>
       </div>
     </header>

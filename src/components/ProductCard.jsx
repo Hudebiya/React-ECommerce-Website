@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
 import { Star, Plus } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { motion } from "framer-motion";
 
 export default function ProductCard({ product }) {
     const { addToCart } = useCart();
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden border border-sage/30 hover:shadow-2xl hover:shadow-deep/20 hover:-translate-y-1 transition duration-300">
+   <motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-60px" }}
+  transition={{ duration: 0.5, ease: "easeOut" }}
+  whileHover={{ y: -8 }}
+  className="group bg-white rounded-3xl overflow-hidden border border-sage/30 hover:shadow-2xl hover:shadow-deep/20 transition-shadow duration-300"
+>
+
       <Link to={`/product/${product.id}`} className="block relative bg-mist aspect-square overflow-hidden">
         <img
           src={product.thumbnail}
@@ -40,6 +49,6 @@ export default function ProductCard({ product }) {
 </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

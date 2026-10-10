@@ -1,4 +1,5 @@
-import { Leaf } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Leaf } from "lucide-react"; 
 
 export default function Footer() {
   return (
@@ -19,13 +20,36 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-3">Quick Links</h4>
-          <ul className="space-y-2 text-sm">
-            <li className="hover:text-sage cursor-pointer transition">Home</li>
-            <li className="hover:text-sage cursor-pointer transition">Cart</li>
-            <li className="hover:text-sage cursor-pointer transition">Contact</li>
-          </ul>
-        </div>
+  <h4 className="text-white font-semibold mb-3">Quick Links</h4>
+  <ul className="space-y-2 text-sm">
+    <li>
+      <Link
+        to="/"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="hover:text-sage transition"
+      >
+        Home
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/cart"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="hover:text-sage transition"
+      >
+        Cart
+      </Link>
+    </li>
+    <li>
+      <a
+        href="mailto:hello@verde.com"
+        className="hover:text-sage transition"
+      >
+        Contact
+      </a>
+    </li>
+  </ul>
+</div>
 
         <div>
           <h4 className="text-white font-semibold mb-3">Newsletter</h4>
